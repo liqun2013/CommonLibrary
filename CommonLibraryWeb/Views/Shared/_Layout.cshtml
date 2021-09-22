@@ -1,0 +1,44 @@
+﻿@model CommonLibraryWeb.BaseResponseModel
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title</title>
+	<link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+	<link href="~/Content/common.css" rel="stylesheet" />
+	<script src="@Url.Content("~/Scripts/jquery-3.6.0.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/popper.min.js")"></script>
+	<script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+	@*<script src="@Url.Content("~/Scripts/bsmultiselect/dist/js/BsMultiSelect.js")"></script>*@
+	@if (Request.IsLocal)
+	{
+		<script src="@Url.Content("~/Scripts/utility.js?v=1.5")"></script>}
+	else
+	{
+		<script src="@Url.Content("~/Scripts/utility.min.js?v=1.5")"></script>
+	}
+	@RenderSection("scripts", required: false)
+</head>
+<body>
+	<nav class="navbar navbar-dark bg-main p-0">
+		<span class="navbar-brand"><span class="h3">应用</span>名称</span>
+		<span class="navbar-nav px-3"><img src="~/Content/img/logo.png" height="40" /></span>
+	</nav>
+	<nav class="navbar navbar-dark bg-dark p-0">
+		<span class="navbar-brand">Welcome,用户名@*@(SessionStateHelper.Get(SessionStateKeys.CurrentLoginUserName)?.ToString())*@</span>
+		<span class="navbar-nav px-3"><a class="nav-link" href="@Url.Action("logout", "account")">Logout</a></span>
+	</nav>
+	<div class="container-fluid">
+		<div class="row">
+			@Html.Action("SideBarMenu", "Layout")
+			<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+				<div class="alert d-none" id="alertMessageContainer" role="alert"></div>
+				@RenderBody()
+			</main>
+		</div>
+		<div class="text-center text-muted">Copyright c @DateTime.Now.Year.ToString() company. All Rights Reserved.</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,39 @@
+﻿@model CommonLibraryWeb.Models.MenuResponseModel
+<ul id="menucontainer" class="nav flex-column col-md-3 col-lg-2 d-md-block sidebar collapse">
+	@foreach (var itm in Model.Menus)
+	{
+		<li class="nav-item">
+			<a class="pitm menuitem0 @(itm.MenuUrl.Equals(Model.ActiveMenu, StringComparison.OrdinalIgnoreCase) ? "active0" : string.Empty)" href="@itm.MenuUrl">@itm.MenuText</a>
+			@if (itm.SubMenus?.Any() == true)
+			{
+				<ul class="nav flex-column submenucontainer @(itm.HasActiveSubMenu ? "" : "collapse")" style="display:@(itm.HasActiveSubMenu ? "block" : "none")">
+					@foreach (var itm2 in itm.SubMenus)
+					{
+						<li class="nav-item">
+							<a class="pitm menuitem1 @(itm2.MenuUrl.Equals(Model.ActiveMenu, StringComparison.OrdinalIgnoreCase) ? "active1" : string.Empty)" href="@itm2.MenuUrl">@itm2.MenuText</a>
+							@if (itm2.SubMenus?.Any() == true)
+							{
+								<ul class="nav flex-column submenucontainer @(itm2.HasActiveSubMenu ? "" : "collapse")" style="display:@(itm2.HasActiveSubMenu ? "block" : "none")">
+									@foreach (var itm3 in itm2.SubMenus)
+									{
+										<li class="nav-item">
+											<a class="menuitem2 @(itm3.MenuUrl.Equals(Model.ActiveMenu, StringComparison.OrdinalIgnoreCase) ? "active2" : string.Empty)" href="@itm3.MenuUrl">@itm3.MenuText</a>
+										</li>
+									}
+								</ul>
+							}
+						</li>
+					}
+				</ul>
+			}
+		</li>
+	}
+</ul>
+<script type="text/javascript">
+	$(function () {
+		$('#menucontainer .pitm').click(function () {
+			$(this).next('.submenucontainer').toggle('slow');
+		});
+	});
+</script>
+

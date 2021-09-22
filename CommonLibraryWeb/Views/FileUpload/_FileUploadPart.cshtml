@@ -1,0 +1,51 @@
+﻿<div>
+	<button id="btnSelectFile" type="button" class="btn btn-outline-primary">@Html.Translate("selectfile1")</button>
+</div>
+<div class="form-group" id="selectedfile" name="selectedfile"></div>
+<div class="form-group text-danger hidden" id="fileIllegal"></div>
+<div class="clearfix"></div>
+<script type="text/javascript" language="javascript">
+		var utilitiesfileupload = new Utilities();
+		var uploaderOpts = { url: '@Url.Action("ProcessUpload","FileUpload", new { Area = "" })' };
+		var multiFileUploader = new MultiFileUploader();
+		$(function () {
+			$('#btnSelectFile').click(function () {
+				if ($('#selectedfile .fileitem').length < 6) {
+					var $input = $('<input type="file" style="display:none" />');
+					$input.appendTo('body');
+					$input[0].click();
+					$input.change(function(e){
+						if (e.target.files && e.target.files.length > 0) {
+							var f = e.target.files[0];
+							var uploader = new ChunkedUploader(null, uploaderOpts);
+							if (f.size > uploader.maximumFileSize) {
+								$('#fileIllegal').text('文件大小超过了限制 2M').removeClass('d-none');
+							}
+							else if (uploader.isFileTypeIllegal(f.name.split('.')[f.name.split('.').length - 1])) {
+								$('#fileIllegal').text('非法文件类型').removeClass('d-none');
+							}
+							else {
+								$('#fileIllegal').text('').addClass('d-none');
+								var containerId = utilitiesfileupload.generateRandomString(8) + multiFileUploader.chunked_uploaders.length + 1;
+								if ($('#' + containerId).length == 0) {
+									$('<div class="fileitem input-file-selected" id="' + containerId + '"><span>' + f.name + '</span>&nbsp;' +
+	'<span>(' + f.size.formatBytes() + ')</span>&nbsp;' +
+	'<button type="button" class="btn btn-outline-info btn-sm uploadfile-doupload">上传文件</button>' +
+	'<button type="button" class="btn-close close float-left" aria-label="Close" title="delete"></button></div><div class="clearfix"></div>').appendTo('#selectedfile');
+									uploader.setFile(f, containerId);
+									multiFileUploader.addFileUploader(uploader);
+								}
+							}
+						}
+					});
+				}
+			});
+			$('#selectedfile').delegate("button.close", "click", function (e) {
+				multiFileUploader.deleteFile($(this).parent().attr('id'));
+			});
+
+			$('#selectedfile').delegate("button.uploadfile-doupload", "click", function (e) {
+				multiFileUploader.uploadFile($(this).parent().attr('id'));
+			});
+		})
+</script>

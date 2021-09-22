@@ -1,0 +1,32 @@
+﻿
+html, body { height: 100% }
+
+/* Set padding to keep content from hitting the edges */
+.body-content { padding-left: 15px; padding-right: 15px; }
+
+/* Override the default bootstrap behavior where horizontal description lists 
+   will truncate terms that are too long to fit in the left column 
+*/
+.dl-horizontal dt { white-space: normal; }
+
+/* Set width on the form input elements since they're 100% wide by default */
+.headfont { font-size: 24px; font-weight: bold }
+.form-signin { width: 100%; max-width: 500px; padding: 15px; margin: auto; }
+	.form-signin .head { background-color: #00638E; color: #ffffff; height: 36px }
+	.form-signin .lang { background-color: #5b5b5b }
+	.form-signin .loginform { background-color: #eeeeee }
+	.form-signin .head .logo { background: url("Image/QTYPE_BW_REV.JPG") no-repeat no-repeat; }
+.bg-main { background-color: #00638E }
+
+#menucontainer a:hover { text-decoration: none; }
+#menucontainer .submenucontainer { padding-left: 0.25rem !important; }
+#menucontainer a.menuitem0 { background-color: #00638E; width: 100%; display: inline-block; color: #ffffff; padding: 0.1rem 0.6rem !important; margin: 0.1rem !important }
+#menucontainer a.menuitem1 { background-color: #17a2b8 !important; width: 100%; display: inline-block; color: #ffffff; padding: 0.1rem 0.6rem !important; margin: 0.1rem !important }
+#menucontainer a.menuitem2 { background-color: #7952b3 !important; width: 100%; display: inline-block; color: #ffffff; padding: 0.1rem 0.6rem !important; margin: 0.1rem !important }
+
+#menucontainer a.active0 { background-color: #ffffff !important; color: #00638E !important; border: solid 0.16rem #00638E }
+#menucontainer a.active1 { background-color: #ffffff !important; color: #17a2b8 !important; border: solid 0.16rem #17a2b8 }
+#menucontainer a.active2 { background-color: #ffffff !important; color: #7952b3 !important; border: solid 0.16rem #7952b3 }
+
+.input-file-selected { margin-top: 5px; }
+	.input-file-selected span, .input-file-selected button { float: left; margin-left: 5px; }

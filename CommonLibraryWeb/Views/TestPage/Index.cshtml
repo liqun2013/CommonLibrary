@@ -1,0 +1,74 @@
+﻿
+@{
+	ViewBag.Title = "Index";
+	Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>File upload test</h2>
+
+<form id="fuform" name="fuform" action="#" enctype="application/x-www-form-urlencoded">
+	<div class="form-group">
+		<label for="cpUploadTestfiletoupload">@Html.Translate("lab_uploadattach")</label>
+		<span class="text-warning">@Html.Translate("lab_fileuploadtips")</span>
+		@*<div>
+			<button id="btnSelectFile_cpUploadTest" type="button" class="btn btn-primary">@Html.Translate("lab_selectfile1")</button>
+		</div>
+		<div class="form-group" id="cpuploadtestselectedfile" name="cpuploadtestselectedfile"></div>
+		<div class="form-group text-danger hidden" id="cpUploadTestfileIllegal"></div>
+		<div class="clearfix"></div>*@
+		@Html.Action("FileUploadPart", "FileUpload")
+	</div>
+</form>
+@section scripts{
+	@if (Request.IsLocal)
+	{
+		<script src="@Url.Content("~/Scripts/uploader.js?v=1.5")"></script>}
+	else
+	{
+		<script src="@Url.Content("~/Scripts/uploader.min.js?v=1.5")"></script>
+	}
+<script language="javascript" type="text/javascript">
+	@*var utilities8 = new Utilities({ msgBoxId: '#alertMessageContainer', secconds: 2 });
+	var cpUploadTestUploaderOpts = { url: '@Url.Action("ProcessUpload","FileUpload", new { Area = "" })', errMsgContainer: "#cpUploadTestfileIllegal" };
+	var multiFileUploader_cpUploadTest = new MultiFileUploader();
+	$(function () {
+		$('#btnSelectFile_cpUploadTest').click(function () {
+			if ($('#cpuploadtestselectedfile .fileitem').length < 6) {
+				var $input = $('<input type="file" style="display:none" />').appendTo('body');
+					$input.trigger('click');
+					$input.change(function(e){
+						if (e.target.files && e.target.files.length > 0) {
+							var f = e.target.files[0];
+							var uploader = new ChunkedUploader(null, cpUploadTestUploaderOpts);
+							if (f.size > uploader.maximumFileSize) {
+								$('#cpUploadTestfileIllegal').text('400MB @Html.Translate("msg_maximumforuploadfilesize")').removeClass('hidden');
+							}
+							else if (uploader.isFileTypeIllegal(f.name.split('.')[f.name.split('.').length - 1])) {
+								$('#cpUploadTestfileIllegal').text('@Html.Translate("msg_filetypeillegal")').removeClass('hidden');
+							}
+							else {
+								$('#cpUploadTestfileIllegal').addClass('hidden');
+								var containerId = utilities8.generateRandomString(8) + multiFileUploader_cpUploadTest.chunked_uploaders.length + 1;
+								if ($('#' + containerId).length == 0) {
+									$('<div class="fileitem input-file-selected" id="' + containerId + '"><span>' + f.name + '</span>&nbsp;' +
+	'<span>(' + f.size.formatBytes() + ')</span>&nbsp;' +
+	'<button type="button" class="btn btn btn-info btn-sm uploadfile-doupload text-white">@Html.Translate("lab_upload_files")</button>' +
+	'<button type="button" class="btn-close close" aria-label="Close" title="@Html.Translate("pub_del")"></button></div><div class="clearfix"></div>').appendTo('#cpuploadtestselectedfile');
+									uploader.setFile(f, containerId);
+									multiFileUploader_cpUploadTest.addFileUploader(uploader);
+								}
+							}
+						}
+					});
+			}
+		});
+		$('#cpuploadtestselectedfile').delegate("button.close", "click", function (e) {
+			multiFileUploader_cpUploadTest.deleteFile($(this).parent().attr('id'));
+		});
+		$('#cpuploadtestselectedfile').delegate("button.uploadfile-doupload", "click", function (e) {
+			multiFileUploader_cpUploadTest.uploadFile($(this).parent().attr('id'));
+		});
+	});*@
+
+</script>
+}

@@ -1,0 +1,11 @@
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\bin\Debug\App.config
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\bin\Debug\CommonLibrary.dll.config
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\bin\Debug\CommonLibrary.dll
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\bin\Debug\CommonLibrary.pdb
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\bin\Debug\log4net.dll
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\bin\Debug\log4net.xml
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\obj\Debug\CommonLibrary.csprojAssemblyReference.cache
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\obj\Debug\CommonLibrary.csproj.CoreCompileInputs.cache
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\obj\Debug\CommonLibrary.csproj.CopyComplete
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\obj\Debug\CommonLibrary.dll
+C:\Users\mai22.public\source\repos\CommonLibrary\CommonFunc\obj\Debug\CommonLibrary.pdb
